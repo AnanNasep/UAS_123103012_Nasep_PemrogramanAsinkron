@@ -178,50 +178,64 @@
     });
 
     function renderCart() {
-    // Ambil cart dari localStorage
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    // Kosongkan kontainer sebelum render
-    $("#cartRecipes").empty();
-    $("#cartProducts").empty();
+        $("#cartRecipes").empty();
+        $("#cartProducts").empty();
 
-    // Pisahkan antara resep dan produk
-    const recipes = cart.filter(item => item.hasOwnProperty("cuisine"));
-    const products = cart.filter(item => item.hasOwnProperty("price"));
+        const recipes = cart.filter(item => item.hasOwnProperty("cuisine"));
+        const products = cart.filter(item => item.hasOwnProperty("price"));
 
-    // Render Resep
-    recipes.forEach(recipe => {
-        const recipeCard = `
-            <div class="col-lg-4 mb-3">
-                <div class="card">
-                    <img src="${recipe.image}" alt="${recipe.name}" class="card-img-top" style="height: 150px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title">${recipe.name}</h5>
-                        <p class="card-text"><strong>Cuisine:</strong> ${recipe.cuisine}</p>
+        // Render Resep
+        recipes.forEach(recipe => {
+            const recipeCard = `
+                <div class="col-lg-4 mb-3" id="cart-item-${recipe.id}">
+                    <div class="card">
+                        <img src="${recipe.image}" alt="${recipe.name}" class="card-img-top" style="height: 150px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">${recipe.name}</h5>
+                            <p class="card-text"><strong>Cuisine:</strong> ${recipe.cuisine}</p>
+                            <button class="btn btn-sm btn-danger" onclick="removeFromCart(${recipe.id}, 'recipe')">🗑 Remove</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        `;
-        $("#cartRecipes").append(recipeCard);
-    });
+            `;
+            $("#cartRecipes").append(recipeCard);
+        });
 
-    // Render Produk
-    products.forEach(product => {
-        const productCard = `
-            <div class="col-lg-4 mb-3">
-                <div class="card">
-                    <img src="${product.thumbnail}" alt="${product.title}" class="card-img-top" style="height: 150px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title">${product.title}</h5>
-                        <p class="card-text"><strong>Price:</strong> $${product.price}</p>
-                        <p class="card-text"><strong>Category:</strong> ${product.category}</p>
+        // Render Produk
+        products.forEach(product => {
+            const productCard = `
+                <div class="col-lg-4 mb-3" id="cart-item-${product.id}">
+                    <div class="card">
+                        <img src="${product.thumbnail}" alt="${product.title}" class="card-img-top" style="height: 150px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">${product.title}</h5>
+                            <p class="card-text"><strong>Price:</strong> $${product.price}</p>
+                            <p class="card-text"><strong>Category:</strong> ${product.category}</p>
+                            <button class="btn btn-sm btn-danger" onclick="removeFromCart(${product.id}, 'product')">🗑 Remove</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        `;
-        $("#cartProducts").append(productCard);
-    });
-}
+            `;
+            $("#cartProducts").append(productCard);
+        });
+    }
+
+    function removeFromCart(id, type) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        if (type === "recipe") {
+            cart = cart.filter(item => !(item.id === id && item.hasOwnProperty("cuisine")));
+        } else if (type === "product") {
+            cart = cart.filter(item => !(item.id === id && item.hasOwnProperty("price")));
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
+        renderCart();
+    }
+
 
 function updateCartCount() {
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
