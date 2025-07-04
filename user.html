@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title>UAS - Pemrograman Asinkron</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Phoenixcoded" />
+    <!-- Favicon icon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+        
+
+</head>
+<body class="">
+	<!-- [ Pre-loader ] End -->
+	<!-- [ navigation menu ] start -->
+	<nav class="pcoded-navbar menupos-fixed menu-light">
+		<div class="navbar-wrapper  ">
+			<div class="navbar-content scroll-div " >
+				
+				
+				<div class="">
+					<div class="main-menu-header">
+						<img class="img-radius" src="assets/images/user/avatar-2.jpg" alt="User-Profile-Image">
+						<div class="user-details">
+							<div id="more-details">Anan Nasep <i class="fa fa-caret-down"></i></div>
+						</div>
+					</div>
+					<div class="collapse" id="nav-user-link">
+						<ul class="list-inline">
+							
+							<li class="list-inline-item"><a href="index.html" data-toggle="tooltip" title="Logout" class="text-danger" onclick="logout()"><i class="feather icon-power"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				
+				<ul class="nav pcoded-inner-navbar mt-4">
+                    <li class="nav-item"><a href="index.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Main Page</span></a></li>
+                    <li class="nav-item"><a href="receipe.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">Click to Eat</span></a></li>
+					
+                    <li class="nav-item"><a href="product.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Product</span></a></li>
+                    <li class="nav-item"><a href="user.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">User</span></a></li>
+					<li class="nav-item"><a href="index2.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Result 3 URL parallel</span></a></li>
+                   
+                    
+					<li class="nav-item"><a href="mycart.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">My Cart <span class="pcoded-badge badge badge-success" id="totalcart">0</span></span></a></li>
+				</ul>				
+			</div>
+		</div>
+	</nav>
+	<!-- [ navigation menu ] end -->
+	<!-- [ Header ] start -->
+	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
+		
+			
+				<div class="m-header">
+					<a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+					<a href="index.html" class="b-brand">
+						<!-- ========   change your logo hear   ============ -->
+						<h4 class="text-white"> UAS</h4>
+						
+					</a>
+					<a href="#!" class="mob-toggler">
+						<i class="feather icon-more-vertical"></i>
+					</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					
+				</div>
+				
+			
+	</header>
+	<!-- [ Header ] end -->
+	
+	
+
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h3 class="m-b-10 text-white">User page</h3>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="row">
+		   <div class="col-md-12">
+				<div class="row"  id="recipeContainer">
+
+				</div>
+		   </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+
+
+<div class="modal fade bd-example-modal-lg" id="modaDetail" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title h4" id="myLargeModalLabel">Your Choice</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body"  id="recipeContainer_detail">
+                
+                <div class="row">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Required Js -->
+    <script src="assets/js/vendor-all.min.js"></script>
+    <script src="assets/js/plugins/bootstrap.min.js"></script>
+    <script src="assets/js/ripple.js"></script>
+    <script src="assets/js/pcoded.min.js"></script>
+	<script src="assets/js/menu-setting.min.js"></script>
+
+<!-- Apex Chart
+<script src="assets/js/plugins/apexcharts.min.js"></script>
+<script src="assets/js/pages/dashboard-main.js"></script>
+ -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!---->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+ $(document).ready(function () {
+	mainFunction();
+    updateCartCount(); // agar jumlah tetap tampil saat reload
+});
+
+function mainFunction(){
+    $("#recipeContainer").empty();
+    $("#filterData").empty(); // kita tidak filter berdasarkan kategori
+
+    $.ajax({
+        url: "https://dummyjson.com/users",
+        method: "GET",
+        success: function(response) {
+            const users = response.users;
+
+            users.forEach(function(user) {
+                const card = `
+                    <div class="col-lg-4 user-card">
+                        <div class="card">
+                            <div class="card-header text-center">
+                                <img src="${user.image}" alt="${user.firstName}" style="height:150px; width: 150px; border-radius: 50%; object-fit: cover">
+                            </div>
+                            <div class="card-body text-center">
+                                <h5>${user.firstName} ${user.lastName}</h5>
+                                <p><strong>Email:</strong> ${user.email}</p>
+                                <p><strong>Gender:</strong> ${user.gender}</p>
+                                <p><strong>Age:</strong> ${user.age}</p>
+                                <hr/>
+                                <a href="javascript:void(0)" onclick="showDetail(${user.id})" class="btn btn-outline-primary">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                $("#recipeContainer").append(card);
+            });
+        },
+        error: function(err) {
+            $("#recipeContainer").html(`<p style="color:red;">Gagal mengambil data: ${err.statusText}</p>`);
+        }
+    });
+}
+function showDetail(id) {
+    $("#recipeContainer_detail").empty();
+
+    $.ajax({
+        url: `https://dummyjson.com/users/${id}`,
+        method: "GET",
+        success: function(user) {
+            const detailCard = `
+                <div class="col-lg-12">
+                    <div>
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>Detail User: ${user.firstName} ${user.lastName}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <img src="${user.image}" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; margin-bottom: 15px;">
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>ID:</strong> ${user.id}</p>
+                                    <p><strong>Name:</strong> ${user.firstName} ${user.lastName}</p>
+                                    <p><strong>Email:</strong> ${user.email}</p>
+                                    <p><strong>Username:</strong> ${user.username}</p>
+                                    <p><strong>Gender:</strong> ${user.gender}</p>
+                                    <p><strong>Age:</strong> ${user.age}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Phone:</strong> ${user.phone}</p>
+                                    <p><strong>Birth Date:</strong> ${user.birthDate}</p>
+                                    <p><strong>Blood Group:</strong> ${user.bloodGroup}</p>
+                                    <p><strong>Height:</strong> ${user.height} cm</p>
+                                    <p><strong>Weight:</strong> ${user.weight} kg</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <hr/>
+                                    <p><strong>Address:</strong> ${user.address.address}, ${user.address.city}, ${user.address.state}</p>
+                                    <p><strong>Company:</strong> ${user.company.name}</p>
+                                    <p><strong>Department:</strong> ${user.company.department}</p>
+                                    <p><strong>Title:</strong> ${user.company.title}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            $("#recipeContainer_detail").append(detailCard);
+            $('#modaDetail').modal('show');
+        },
+        error: function(err) {
+            alert("Gagal mengambil detail user: " + err.statusText);
+        }
+    });
+}
+
+function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    $("#totalcart").text(cart.length);
+}
+
+</script>
+
+</body>
+
+
+<!-- Mirrored from ableproadmin.com/bootstrap/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 Sep 2021 00:41:44 GMT -->
+</html>

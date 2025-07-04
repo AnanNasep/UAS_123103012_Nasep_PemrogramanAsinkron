@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title>UAS - Pemrograman Asinkron</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Phoenixcoded" />
+    <!-- Favicon icon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+        
+
+</head>
+<body class="">
+	<!-- [ Pre-loader ] End -->
+	<!-- [ navigation menu ] start -->
+	<nav class="pcoded-navbar menupos-fixed menu-light ">
+		<div class="navbar-wrapper  ">
+			<div class="navbar-content scroll-div " >
+				
+				
+				<div class="">
+					<div class="main-menu-header">
+						<img class="img-radius" src="assets/images/user/avatar-2.jpg" alt="User-Profile-Image">
+						<div class="user-details">
+							<div id="more-details">Anan Nasep <i class="fa fa-caret-down"></i></div>
+						</div>
+					</div>
+					<div class="collapse" id="nav-user-link">
+						<ul class="list-inline">
+							
+							<li class="list-inline-item"><a href="index.html" data-toggle="tooltip" title="Logout" class="text-danger" onclick="logout()"><i class="feather icon-power"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				
+				<ul class="nav pcoded-inner-navbar mt-4">
+                    
+                    <li class="nav-item"><a href="index.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Main Page</span></a></li>
+                    <li class="nav-item"><a href="receipe.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">Click to Eat</span></a></li>
+                    <li class="nav-item"><a href="product.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Product</span></a></li>
+                    <li class="nav-item"><a href="user.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">User</span></a></li>
+					<li class="nav-item"><a href="index2.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Result 3 URL parallel</span></a></li>
+                    
+                    
+					<li class="nav-item"><a href="mycart.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">My Cart <span class="pcoded-badge badge badge-success" id="totalcart">0</span></span></a></li>
+				</ul>				
+			</div>
+		</div>
+	</nav>
+	<!-- [ navigation menu ] end -->
+	<!-- [ Header ] start -->
+	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
+		
+			
+				<div class="m-header">
+					<a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+					<a href="index.html" class="b-brand">
+						<!-- ========   change your logo hear   ============ -->
+						<h4 class="text-white"> UAS</h4>
+						
+					</a>
+					<a href="#!" class="mob-toggler">
+						<i class="feather icon-more-vertical"></i>
+					</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					
+				</div>
+				
+			
+	</header>
+	<!-- [ Header ] end -->
+	
+	
+
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-9">
+                        <div class="page-header-title">
+                            <h3 class="m-b-10 text-white">Checkout page</h3>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary float-right" onclick="checkoutCart()">Checkout Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="row" >
+            <div class="col-md-12">
+                <div class="card">
+                    
+                    <div class="card-body">
+                    <h3>🧾 Recipes Cart</h3>
+                    <div class="row"  id="cartRecipes">
+                     </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+         
+         
+        <div class="row" >
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                    <h3>🛒 Products Cart</h3>
+                    <div class="row"  id="cartProducts">
+                     </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+
+         <div id="responseCartSubmit" class="mt-3"></div>
+
+    </div>
+</div>
+
+
+<div class="modal fade bd-example-modal-lg" id="modaDetail" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title h4" id="myLargeModalLabel">Your Choice</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body"  id="recipeContainer_detail">
+                
+                <div class="row">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Required Js -->
+    <script src="assets/js/vendor-all.min.js"></script>
+    <script src="assets/js/plugins/bootstrap.min.js"></script>
+    <script src="assets/js/ripple.js"></script>
+    <script src="assets/js/pcoded.min.js"></script>
+	<script src="assets/js/menu-setting.min.js"></script>
+
+<!-- Apex Chart
+<script src="assets/js/plugins/apexcharts.min.js"></script>
+<script src="assets/js/pages/dashboard-main.js"></script>
+ -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!---->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        renderCart();
+        updateCartCount(); // agar jumlah tetap tampil saat reload
+    });
+
+    function renderCart() {
+    // Ambil cart dari localStorage
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Kosongkan kontainer sebelum render
+    $("#cartRecipes").empty();
+    $("#cartProducts").empty();
+
+    // Pisahkan antara resep dan produk
+    const recipes = cart.filter(item => item.hasOwnProperty("cuisine"));
+    const products = cart.filter(item => item.hasOwnProperty("price"));
+
+    // Render Resep
+    recipes.forEach(recipe => {
+        const recipeCard = `
+            <div class="col-lg-4 mb-3">
+                <div class="card">
+                    <img src="${recipe.image}" alt="${recipe.name}" class="card-img-top" style="height: 150px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">${recipe.name}</h5>
+                        <p class="card-text"><strong>Cuisine:</strong> ${recipe.cuisine}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+        $("#cartRecipes").append(recipeCard);
+    });
+
+    // Render Produk
+    products.forEach(product => {
+        const productCard = `
+            <div class="col-lg-4 mb-3">
+                <div class="card">
+                    <img src="${product.thumbnail}" alt="${product.title}" class="card-img-top" style="height: 150px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">${product.title}</h5>
+                        <p class="card-text"><strong>Price:</strong> $${product.price}</p>
+                        <p class="card-text"><strong>Category:</strong> ${product.category}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+        $("#cartProducts").append(productCard);
+    });
+}
+
+function updateCartCount() {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        $("#totalcart").text(cart.length);
+    }
+
+    localStorage.setItem("token", "rahasiatoken123");
+
+    function checkoutCart() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const responseContainer = document.getElementById("responseCartSubmit");
+    responseContainer.innerHTML = ""; // Kosongkan isi sebelumnya
+
+    if (cart.length === 0) {
+        alert("Keranjang masih kosong!");
+        return;
+    }
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        alert("Token tidak ditemukan. Silakan login terlebih dahulu.");
+        return;
+    }
+
+    // Tampilkan loading spinner
+    responseContainer.innerHTML = `
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <span class="ml-2">Sedang memproses checkout...</span>
+    `;
+
+    const pesan = JSON.stringify(cart);
+
+    fetch("http://127.0.0.1:8000/submit", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify({ message: pesan })
+    })
+    .then(res => {
+        if (!res.ok) throw new Error("Gagal mengirim cart!");
+        return res.json();
+    })
+    .then(data => {
+    let formatted = "";
+
+    try {
+        // Parse dan format JSON agar tampil vertikal dan rapi
+        const parsed = JSON.parse(data.received_message);
+        formatted = `<pre>${JSON.stringify(parsed, null, 2)}</pre>`;
+    } catch (e) {
+        formatted = `<pre>${data.received_message}</pre>`; // fallback
+    }
+
+    responseContainer.innerHTML = `
+        <div class="alert alert-success" role="alert">
+            <strong>Checkout berhasil!</strong><br/>
+            Respon dari server:<br/>
+            ${formatted}
+        </div>
+    `;
+
+    localStorage.removeItem("cart");
+    updateCartCount();
+    renderCart();
+})
+    .catch(err => {
+        // Tampilkan pesan error
+        responseContainer.innerHTML = `
+            <div class="alert alert-danger" role="alert">
+                <strong>Checkout gagal:</strong> ${err.message}
+            </div>
+        `;
+    });
+}
+
+</script>
+
+</body>
+
+
+<!-- Mirrored from ableproadmin.com/bootstrap/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 Sep 2021 00:41:44 GMT -->
+</html>

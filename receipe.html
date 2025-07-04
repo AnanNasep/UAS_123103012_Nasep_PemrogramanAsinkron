@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title>UAS - Pemrograman Asinkron</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Phoenixcoded" />
+    <!-- Favicon icon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+        
+
+</head>
+<body class="">
+	<!-- [ Pre-loader ] End -->
+	<!-- [ navigation menu ] start -->
+	<nav class="pcoded-navbar menupos-fixed menu-light">
+		<div class="navbar-wrapper  ">
+			<div class="navbar-content scroll-div " >
+				
+				
+				<div class="">
+					<div class="main-menu-header">
+						<img class="img-radius" src="assets/images/user/avatar-2.jpg" alt="User-Profile-Image">
+						<div class="user-details">
+							<div id="more-details">Anan Nasep <i class="fa fa-caret-down"></i></div>
+						</div>
+					</div>
+					<div class="collapse" id="nav-user-link">
+						<ul class="list-inline">
+							
+							<li class="list-inline-item"><a href="index.html" data-toggle="tooltip" title="Logout" class="text-danger" onclick="logout()"><i class="feather icon-power"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				
+				<ul class="nav pcoded-inner-navbar mt-4">
+                    <li class="nav-item"><a href="index.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Main Page</span></a></li>
+                    <li class="nav-item"><a href="receipe.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">Click to Eat</span></a></li>
+					
+                    <li class="nav-item"><a href="product.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Product</span></a></li>
+                    
+                    <li class="nav-item"><a href="user.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">User</span></a></li>
+
+					<li class="nav-item"><a href="index2.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Result 3 URL parallel</span></a></li>
+                   
+                    
+					<li class="nav-item"><a href="mycart.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">My Cart <span class="pcoded-badge badge badge-success" id="totalcart">0</span></span></a></li>
+				</ul>				
+			</div>
+		</div>
+	</nav>
+	<!-- [ navigation menu ] end -->
+	<!-- [ Header ] start -->
+	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
+		
+			
+				<div class="m-header">
+					<a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+					<a href="index.html" class="b-brand">
+						<!-- ========   change your logo hear   ============ -->
+						<h4 class="text-white"> UAS</h4>
+						
+					</a>
+					<a href="#!" class="mob-toggler">
+						<i class="feather icon-more-vertical"></i>
+					</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					
+				</div>
+				
+			
+	</header>
+	<!-- [ Header ] end -->
+	
+	
+
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h3 class="m-b-10 text-white">Click to Eat</h3>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="row">
+           <div class="col-md-3">
+			<div class="card"  id="filterData">
+
+			</div>
+
+		   </div>
+		   <div class="col-md-9">
+				<div class="row"  id="recipeContainer">
+
+				</div>
+		   </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+
+
+<div class="modal fade bd-example-modal-lg" id="modaDetail" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title h4" id="myLargeModalLabel">Your Choice</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body"  id="recipeContainer_detail">
+                
+                <div class="row">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Required Js -->
+    <script src="assets/js/vendor-all.min.js"></script>
+    <script src="assets/js/plugins/bootstrap.min.js"></script>
+    <script src="assets/js/ripple.js"></script>
+    <script src="assets/js/pcoded.min.js"></script>
+	<script src="assets/js/menu-setting.min.js"></script>
+
+<!-- Apex Chart
+<script src="assets/js/plugins/apexcharts.min.js"></script>
+<script src="assets/js/pages/dashboard-main.js"></script>
+ -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!---->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+ $(document).ready(function () {
+	mainFunction();
+    updateCartCount(); // agar jumlah tetap tampil saat reload
+});
+function mainFunction(){
+    $("#recipeContainer").empty();
+    $("#filterData").empty(); // bersihkan filter sebelumnya
+
+    $.ajax({
+        url: "https://dummyjson.com/recipes",
+        method: "GET",
+        success: function(response) {
+            const recipes = response.recipes;
+            const cuisines = new Set(); // untuk menampung jenis cuisine unik
+
+            recipes.forEach(function(recipe) {
+                cuisines.add(recipe.cuisine); // simpan jenis cuisine unik
+
+                const card = `
+                    <div class="col-lg-4 recipe-card" data-cuisine="${recipe.cuisine}">
+                        <div class="card">
+                            <div class="card-header">
+                                <img src="${recipe.image}" alt="${recipe.name}" style="height:150px; width: 100%; border: none; border-radius: 12px; object-fit: cover">
+                            </div>
+                            <div class="card-body">
+                                <h5>${recipe.name}</h5>
+                                <p><strong>Cuisine:</strong> ${recipe.cuisine}</p>
+                                <p><strong>Calories:</strong> ${recipe.caloriesPerServing}</p>
+                                <p><strong>Cook Time:</strong> ${recipe.cookTimeMinutes} minutes</p>
+                                <hr/>
+                                <a href="javascript:void(0)" onclick="addToCart(${recipe.id})" class="btn btn-outline-primary float-right ml-2">Add to cart</a>
+                                <a href="javascript:void(0)" onclick="showDetail(${recipe.id})" class="btn btn-outline-primary float-right">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                $("#recipeContainer").append(card);
+            });
+
+            // Tambahkan tombol filter
+            $("#filterData").append(`<button class="btn btn-secondary m-1" onclick="filterCuisine('all')">All</button>`);
+            cuisines.forEach(function(cuisine) {
+                $("#filterData").append(`
+                    <button class="btn btn-outline-secondary m-1" onclick="filterCuisine('${cuisine}')">${cuisine}</button>
+                `);
+            });
+        },
+        error: function(err) {
+            $("#recipeContainer").html(`<p style="color:red;">Gagal mengambil data: ${err.statusText}</p>`);
+        }
+    });
+}
+
+function filterCuisine(selectedCuisine) {
+    $(".recipe-card").each(function() {
+        const cuisine = $(this).data("cuisine");
+        if (selectedCuisine === "all" || cuisine === selectedCuisine) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    });
+	$("#filterData button").removeClass("btn-secondary").addClass("btn-outline-secondary");
+	$(`#filterData button:contains('${selectedCuisine}')`).removeClass("btn-outline-secondary").addClass("btn-secondary");
+
+}
+
+function showDetail(id) {
+	$("#recipeContainer_detail").empty();
+    $.ajax({
+        url: `https://dummyjson.com/recipes/${id}`,
+        method: "GET",
+        success: function(recipe) {
+            const detailCard = `
+                <div class="col-lg-12">
+                    <div >
+                        <div class="card-header">
+							<div class="row">
+								<div class="col-md-12">
+									<h3>Detail Resep: ${recipe.name}</h3>
+								</div>
+							</div>
+                        </div>
+                        <div class="card-body">
+							<div class="row">
+								<div class="col-md-12">
+									<center>
+									<img src="${recipe.image}" style="max-width: 100%; height: 300px; object-fit: cover; border-radius: 10px; margin-bottom: 15px;"></center>
+								</div>
+								<div class="col-md-12">
+									<div class="row">
+										<div class="col-6">
+											<p><strong>ID:</strong> ${recipe.id}</p>
+											<p><strong>Name:</strong> ${recipe.name}</p>
+											<p><strong>Difficulty:</strong> ${recipe.difficulty}</p>
+											<p><strong>Cuisine:</strong> ${recipe.cuisine}</p>
+											<p><strong>Calories:</strong> ${recipe.caloriesPerServing}</p>
+										</div>
+										<div class="col-6">
+											<p><strong>Cook Time:</strong> ${recipe.cookTimeMinutes} minutes</p>
+											<p><strong>Prep Time:</strong> ${recipe.prepTimeMinutes} minutes</p>
+											<p><strong>Rating:</strong> ${recipe.rating}</p>
+											<p><strong>Review Count:</strong> ${recipe.reviewCount}</p>
+											<p><strong>Servings:</strong> ${recipe.servings}</p>
+										</div>
+										<div class="col-12">
+											<hr/>
+											<p><strong>Tags:</strong> ${recipe.tags.join(", ")}</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-12">
+									<p><strong>Ingredients:</strong> ${recipe.ingredients.join(", ")}</p>
+									<p><strong>Instructions:</strong><br>${recipe.instructions.map(step => `<li>${step}</li>`).join('')}</p>
+								</div>
+							</div>
+						</div>
+                    </div>
+                </div>
+            `;
+            $("#recipeContainer_detail").append(detailCard);
+
+			
+            $('#modaDetail').modal('show');
+        },
+        error: function(err) {
+            alert("Gagal mengambil detail resep: " + err.statusText);
+        }
+    });
+}
+
+function addToCart(recipeId) {
+    // Ambil data cart dari localStorage
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Cek apakah item sudah ada di cart
+    const exists = cart.find(item => item.id === recipeId);
+    if (!exists) {
+        // Ambil data resep dari API (atau kamu bisa simpan di global jika lebih efisien)
+        $.ajax({
+            url: `https://dummyjson.com/recipes/${recipeId}`,
+            method: "GET",
+            success: function(recipe) {
+                cart.push({
+                    id: recipe.id,
+                    name: recipe.name,
+                    image: recipe.image,
+                    cuisine: recipe.cuisine
+                });
+
+                localStorage.setItem("cart", JSON.stringify(cart));
+                updateCartCount();
+            },
+            error: function(err) {
+                alert("Gagal menambahkan ke keranjang");
+            }
+        });
+    } else {
+        alert("Item sudah ada di keranjang!");
+    }
+}
+
+function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    $("#totalcart").text(cart.length);
+}
+
+</script>
+
+</body>
+
+
+<!-- Mirrored from ableproadmin.com/bootstrap/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 Sep 2021 00:41:44 GMT -->
+</html>

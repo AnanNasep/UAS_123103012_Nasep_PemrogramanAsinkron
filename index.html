@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title>UAS - Pemrograman Asinkron</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Phoenixcoded" />
+    <!-- Favicon icon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+        
+
+</head>
+<body class="">
+	<!-- [ Pre-loader ] End -->
+	<!-- [ navigation menu ] start -->
+	<nav class="pcoded-navbar menupos-fixed menu-light">
+		<div class="navbar-wrapper  ">
+			<div class="navbar-content scroll-div " >
+				
+				
+				<div class="">
+					<div class="main-menu-header">
+						<img class="img-radius" src="assets/images/user/avatar-2.jpg" alt="User-Profile-Image">
+						<div class="user-details">
+							<div id="more-details">Anan Nasep <i class="fa fa-caret-down"></i></div>
+						</div>
+					</div>
+					<div class="collapse" id="nav-user-link">
+						<ul class="list-inline">
+							
+							<li class="list-inline-item"><a href="index.html" data-toggle="tooltip" title="Logout" class="text-danger" onclick="logout()"><i class="feather icon-power"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				
+				<ul class="nav pcoded-inner-navbar mt-4">
+                    <li class="nav-item"><a href="index.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Main Page</span></a></li>
+                    <li class="nav-item"><a href="receipe.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">Click to Eat</span></a></li>
+					
+                    <li class="nav-item"><a href="product.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Product</span></a></li>
+					
+                    <li class="nav-item"><a href="user.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">User</span></a></li>
+					<li class="nav-item"><a href="index2.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Result 3 URL parallel</span></a></li>
+                                
+					<li class="nav-item"><a href="mycart.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">My Cart <span class="pcoded-badge badge badge-success" id="totalcart">0</span></span></a></li>
+				</ul>				
+			</div>
+		</div>
+	</nav>
+	<!-- [ navigation menu ] end -->
+	<!-- [ Header ] start -->
+	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
+		
+			
+				<div class="m-header">
+					<a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+					<a href="index.html" class="b-brand">
+						<!-- ========   change your logo hear   ============ -->
+						<h4 class="text-white"> UAS</h4>
+						
+					</a>
+					<a href="#!" class="mob-toggler">
+						<i class="feather icon-more-vertical"></i>
+					</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					
+				</div>
+				
+			
+	</header>
+	<!-- [ Header ] end -->
+	
+	
+
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h3 class="m-b-10 text-white">Welcome to System Created by 123103012 - Nasep</h3>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="row">
+		   <div class="col-md-12">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="mb-3">📘 Cara Kerja Aplikasi</h4>
+						<ul>
+							<li><strong>1. Menampilkan Data dari 3 API:</strong>
+								<ul>
+									<li><strong>Resep</strong>: Diambil dari <code>https://dummyjson.com/recipes</code>. Ditampilkan dalam bentuk kartu. Bisa difilter berdasarkan <em>cuisine</em>.</li>
+									<li><strong>Produk</strong>: Diambil dari <code>https://dummyjson.com/products</code>. Ditampilkan dalam kartu. Bisa difilter berdasarkan <em>category</em>.</li>
+									<li><strong>User</strong>: Diambil dari <code>https://dummyjson.com/users</code>. Ditampilkan dengan info dasar dan detail di modal.</li>
+								</ul>
+							</li>
+						
+							<li><strong>2. Fitur Detail:</strong> 
+								<ul>
+									<li>Setiap item memiliki tombol <em>Detail</em> untuk menampilkan informasi lengkap di modal Bootstrap.</li>
+								</ul>
+							</li>
+						
+							<li><strong>3. Fitur Add to Cart:</strong> 
+								<ul>
+									<li>Tombol <em>Add to Cart</em> menyimpan data ke <code>localStorage</code>.</li>
+									<li>Cart bisa berisi campuran data resep dan produk.</li>
+									<li>Jumlah item cart ditampilkan pada elemen dengan ID <code>#totalcart</code>.</li>
+								</ul>
+							</li>
+						
+							<li><strong>4. Tampilan Cart:</strong>
+								<ul>
+									<li>Cart ditampilkan secara terpisah antara <strong>resep</strong> dan <strong>produk</strong>.</li>
+									<li>Data dibaca dari <code>localStorage</code> dan dirender dalam HTML.</li>
+								</ul>
+							</li>
+						
+							<li><strong>5. Checkout ke Backend (Python FastAPI):</strong>
+								<ul>
+									<li>Checkout mengirim isi cart ke <code>http://127.0.0.1:8000/submit</code>.</li>
+									<li>Data dikirim sebagai JSON: <code>{ message: [...] }</code>.</li>
+									<li>Token dikirim lewat header: <code>Authorization: Bearer rahasiatoken123</code>.</li>
+									<li>Jika berhasil, cart akan dikosongkan dan halaman diperbarui.</li>
+								</ul>
+							</li>
+						
+							<li><strong>6. Setup dan Instalasi FastAPI (Backend):</strong>
+								<ol>
+									<li>📦 Buat folder project baru dan file <code>main.py</code></li>
+									<li>💻 Install FastAPI dan Uvicorn:<br>
+										<code>pip install fastapi uvicorn</code>
+									</li>
+									<li>📄 Isi file <code>main.py</code> seperti berikut:
+						<pre><code>from fastapi import FastAPI, Request, HTTPException
+						from fastapi.middleware.cors import CORSMiddleware
+						from pydantic import BaseModel
+						
+						app = FastAPI()
+						
+						app.add_middleware(
+							CORSMiddleware,
+							allow_origins=["*"],
+							allow_credentials=True,
+							allow_methods=["*"],
+							allow_headers=["*"],
+						)
+						
+						class Data(BaseModel):
+							message: str
+						
+						@app.post("/submit")
+						async def submit_data(request: Request, data: Data):
+							token = request.headers.get("Authorization")
+							if token != "Bearer rahasiatoken123":
+								raise HTTPException(status_code=401, detail="Unauthorized")
+							return {"received_message": data.message}
+						</code></pre>
+									</li>
+									<li>🚀 Jalankan server FastAPI:
+										<br><code>python -m uvicorn main:app --reload</code>
+										
+									</li>
+									<li>🌐 Akses server di: <code>http://127.0.0.1:8000</code> dan dokumentasi di <code>/docs</code></li>
+									
+									<li>Ini hasil dari server dan python -m uvicorn main:app --reload pada cmd:
+										<br>
+										<img src="assets/FastAPIServer.JPG" alt="" style=" width: 100%; border: none; border-radius: 12px; object-fit: cover">
+									</li>
+									<li>Demo :
+										<br>
+										<video width="100%" controls>
+											<source src="assets/demo.mp4" type="video/mp4">
+											Your browser does not support the video tag.
+										  </video>
+										  
+									</li>
+								</ol>
+							</li>
+						</ul>
+						
+						<p class="mt-3 text-muted"><em>Seluruh proses frontend menggunakan HTML, jQuery, Bootstrap, dan localStorage. Backend menggunakan Python FastAPI dengan komunikasi via fetch() dan token otorisasi.</em></p>
+						
+					</div>
+				</div>
+		   </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+
+    <!-- Required Js -->
+    <script src="assets/js/vendor-all.min.js"></script>
+    <script src="assets/js/plugins/bootstrap.min.js"></script>
+    <script src="assets/js/ripple.js"></script>
+    <script src="assets/js/pcoded.min.js"></script>
+	<script src="assets/js/menu-setting.min.js"></script>
+
+<!-- Apex Chart
+<script src="assets/js/plugins/apexcharts.min.js"></script>
+<script src="assets/js/pages/dashboard-main.js"></script>
+ -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!---->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+	
+	$(document).ready(function () {
+    updateCartCount(); // agar jumlah tetap tampil saat reload
+});
+
+function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    $("#totalcart").text(cart.length);
+}
+</script>
+
+</body>
+
+
+<!-- Mirrored from ableproadmin.com/bootstrap/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 Sep 2021 00:41:44 GMT -->
+</html>

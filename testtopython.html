@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>POST ke FastAPI</title>
+</head>
+<body>
+    <h2>Kirim Pesan ke Server</h2>
+    <input type="text" id="pesan" placeholder="Tulis pesan">
+    <button onclick="kirimData()">Kirim</button>
+
+    <script>
+        // Simpan token ke localStorage (biasanya setelah login)
+        localStorage.setItem("token", "rahasiatoken123");
+
+        function kirimData() {
+            const pesan = document.getElementById("pesan").value;
+            const token = localStorage.getItem("token");
+
+            fetch("http://127.0.0.1:8000/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + token
+                },
+                body: JSON.stringify({ message: pesan })
+            })
+            .then(res => {
+                if (!res.ok) throw new Error("Gagal kirim!");
+                return res.json();
+            })
+            .then(data => {
+                alert("Respon server: " + JSON.stringify(data));
+            })
+            .catch(err => {
+                alert("Error: " + err.message);
+            });
+        }
+    </script>
+</body>
+</html>
